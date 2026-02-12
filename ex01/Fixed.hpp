@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
+#include <fstream>
 
 class Fixed {
 
@@ -8,6 +10,7 @@ class Fixed {
 		int			_num;
 		static const int	_bits = 8;
 	public:
+		Fixed();
 		Fixed(const int num);
 		Fixed(const float num);
 		//copy constructor
@@ -17,5 +20,8 @@ class Fixed {
 		~Fixed();
 		float	toFloat(void) const;
 		int	toInt(void) const;
-	Fixed& operator<<(const Fixed& copy);
+		int	getRawBits(void) const;
+		void	setRawBits(int const raw);
 };
+
+std::ostream&	 operator<<(std::ostream& os, const Fixed& copy);
